@@ -1,0 +1,87 @@
+\documentclass[12pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{tabularx}
+
+% page margin
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+
+\usepackage{graphicx}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+% modifying page layout using fancyhdr
+\fancyhf{}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\renewcommand{\subsectionmark}[1]{\markright{\thesubsection\ #1}}
+
+\rhead{\fancyplain{}{\rightmark }}
+\cfoot{\fancyplain{}{\thepage }}
+
+\renewcommand{\arraystretch}{1.3}
+
+\begin{document}
+
+\vspace*{-3cm}
+\begin{figure}[!ht]
+	\includegraphics[width = 0.33\linewidth]{../1exp.png}
+	\includegraphics[width = 0.33\linewidth]{../2exp.png}
+	\includegraphics[width = 0.33\linewidth]{../3exp.png}
+	\caption{Зависимости положения мениска от времени в трех экспериментах}
+\end{figure}
+
+\vspace*{-1cm}
+\begin{table}[!ht]
+\begin{center}
+\caption{}
+\begin{tabular}{ccccc}
+	\hline
+	Номер эксперимента & [I], моль/л & log [I] & v$_p$, моль/л$\cdot$с & log v$_p$ \\
+	%\hline
+	\#1 & 8.92$\cdot 10^{-3}$ & -4.72 & 1.18$\cdot 10^{-4}$ & -9.05 \\
+	\#2 & 1.78$\cdot 10^{-2}$ & -4.03 & 3.35$\cdot 10^{-4}$ & -8.00 \\
+	\#3 & 3.36$\cdot 10^{-2}$ & -3.33 & 6.47$\cdot 10^{-4}$ & -7.34 \\  
+	\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{figure}[!ht]
+	\includegraphics[width = 1.1\linewidth]{../loglog.png}
+	\caption{Определение порядка реакции по инициатору}
+\end{figure}
+
+Порядок реакции по инициатору 1.225.
+
+Определим скорость ингибирования по формуле
+\begin{gather}
+		v_{inh} = \frac{[TEMPO]}{t_{inh}}, \quad t_{inh} = t_2 - t_3, \notag
+\end{gather}
+где $t_2$, $t_3$ -- времена, отсекаемые прямыми на центральном и правом графиках на рис. 1, а $[TEMPO]$ -- концентрация TEMPO в реакционной смеси ( 1.5$\cdot 10^{-4}$M ). Скорость ингибирования $v_{inh} = 8.24 \cdot 10^{-5} M/s$. \par
+Определим константу распада по следующей формуле
+\begin{gather}
+	k_{dis} = \frac{v_{inh}}{2 \cdot f \cdot [I]} = 4.97 \cdot 10^{-3} s^{-1}, \quad f \approx 0.5 \notag
+\end{gather}
+
+Длину кинетической цепи $Y_{kin}$ определяют в условиях квазистационарности радикалов из соотношения скоростей роста цепи и ингибирования:
+\begin{gather}
+		Y_{kin} = \frac{v_p}{v_{inh}} = 4.075 \notag
+\end{gather}
+
+\section{Вопросы}
+\begin{enumerate}
+	\item На чем основано определение скорости инициирования? \\
+	Метод определения скорости инициирования основан на измерении скорости полимеризации при разных концентрациях инициатора на начальных конверсиях мономера.
+	\item В чем отличие константы инициирования от константы распада инициатора? \\
+	Константа распада инициатора определяет распад инициатора с образованием радикалов, которые инициируют процесс радикальной полимеризации мономеров. Инициация мономеров определяется константой инициирования. Константа инициирования связана с константой распада инициатора эффективностью инициатора.
+	\item Какую информацию дает величина длины кинетической цепи? \\
+	Кинетическая цепь -- число молекул мономера, приходящихся на один образовавшийся радикал $R\cdot$  до его гибели при обрыве цепи. Эта величина напрямую связана со среднечисловой степенью полимеризации ( в зависимости от преобладающего типа обрыва цепи, они связаны по-разному). 
+\end{enumerate}
+
+
+\end{document}
