@@ -41,7 +41,7 @@ times, vals = read_file( 'exp_12_09_17.txt' )
 
 length_first_exp = 29
 length_second_exp = 22
-length_third_exp = 16
+length_third_exp = 20 
 
 # first exp
 times1 = times[:length_first_exp]
@@ -68,7 +68,7 @@ x3 = np.linspace( 0.0, max(dt3), 100 )
 
 fp1, residual, rank, sv, rcond = sp.polyfit( dt1, dv1, 1, full = True )
 fp2, residual, rank, sv, rcond = sp.polyfit( dt2[5:], dv2[5:], 1, full = True )
-fp3, residual, rank, sv, rcond = sp.polyfit( dt3[5:], dv3[5:], 1, full = True )
+fp3, residual, rank, sv, rcond = sp.polyfit( dt3[6:], dv3[6:], 1, full = True )
 
 f1 = sp.poly1d( fp1 )
 f2 = sp.poly1d( fp2 )
@@ -89,13 +89,19 @@ print('vp1: {0}'.format(vp1))
 print('vp2: {0}'.format(vp2))
 print('vp3: {0}'.format(vp3))
 
-inic_concentrations = [ 2.0, 4.0, 8.0 ]
-inic_concentrations_log  = [ np.log(i / 242.23) for i in inic_concentrations ]
+# inic_concentrations = [ 2.0, 4.0, 8.0 ]
+#inic_concentrations_log  = [ np.log(i / 242.23) for i in inic_concentrations ]
+
+mma_concetrations = [ 1.872, 3.744, 7.488 ]
+mma_concetrations_log = [ np.log( mma ) for mma in mma_concetrations ]
 vp_log = [ np.log(vp1), np.log(vp2), np.log(vp3) ]
 
-fp4, residual, rank, sv, rcond = sp.polyfit( inic_concentrations_log, vp_log, 1, full = True )
+print(mma_concetrations_log)
+
+#fp4, residual, rank, sv, rcond = sp.polyfit( inic_concentrations_log, vp_log, 1, full = True )
+fp4, residual, rank, sv, rcond = sp.polyfit( mma_concetrations_log, vp_log, 1, full = True )
 f4 = sp.poly1d( fp4 )
-x4 = np.linspace(-5, -3, 100 )
+x4 = np.linspace(0, 2.5, 100 )
 print('fp4[0]: {0}'.format(fp4[0]))
 
 lw = 2.0
@@ -107,23 +113,27 @@ inhib_velocity = tempo_conc / delta_t_23
 print('inhib_velocity: {0}'.format(inhib_velocity))
 #plt.plot( dt1, dv1, color = 'k', linewidth = lw )
 #plt.plot( x1, f1(x1), color = 'r', linestyle = 'dotted', linewidth = lw )
+
+plt.ylim((0, 7))
+
 #plt.plot( dt2, dv2, color = 'k', linewidth = lw )
 #plt.plot( x2, f2(x2), color = 'r', linestyle = 'dotted', linewidth = lw )
-#plt.plot( dt3, dv3, color = 'k', linewidth = lw )
-#plt.plot( x3, f3(x3), color = 'r', linestyle = 'dotted', linewidth = lw )
+plt.plot( dt3, dv3, color = 'k', linewidth = lw )
+plt.plot( x3, f3(x3), color = 'r', linestyle = 'dotted', linewidth = lw )
 
-plt.scatter( inic_concentrations_log, vp_log, color = 'k', marker = 'o', s = 40 )
-plt.plot( x4, f4( x4 ), color = 'r', linestyle = 'dotted', linewidth = lw )
+# plt.scatter( inic_concentrations_log, vp_log, color = 'k', marker = 'o', s = 40 )
+# plt.scatter( mma_concetrations_log, vp_log, color = 'k', marker = 'o', s = 40 )
+# plt.plot( x4, f4( x4 ), color = 'r', linestyle = 'dotted', linewidth = lw )
 
 #plt.title(r'\Large First experiment')
-#plt.title(r'\Large Second experiment')
-#plt.title(r'\Large Third experiment')
-#plt.xlabel(r'Time, s')
-#plt.ylabel(r'h, mm')
+# plt.title(r'\Large Second experiment')
+plt.title(r'\Large Third experiment')
+plt.xlabel(r'Time, s')
+plt.ylabel(r'h, mm')
 
-plt.title(r'Log-Log plot')
-plt.xlabel(r'Log [I]')
-plt.ylabel(r'Log V$_\textup{p}$')
+#plt.title(r'Log-Log plot')
+#plt.xlabel(r'Log [M]')
+#plt.ylabel(r'Log V$_\textup{p}$')
 
 plt.grid( linestyle = ':', alpha = 0.7 )
 

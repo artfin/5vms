@@ -8,6 +8,8 @@
 \usepackage{float}
 \usepackage{tabularx}
 
+\usepackage{textcomp}
+
 % page margin
 \usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
 
@@ -27,36 +29,66 @@
 
 \begin{document}
 
-\vspace*{-3cm}
+\vspace*{-2cm}
 \begin{figure}[!ht]
-	\includegraphics[width = 0.33\linewidth]{../1exp.png}
-	\includegraphics[width = 0.33\linewidth]{../2exp.png}
-	\includegraphics[width = 0.33\linewidth]{../3exp.png}
+	\includegraphics[width = 0.33\linewidth]{../1exp_new.png}
+	\includegraphics[width = 0.33\linewidth]{../2exp_new.png}
+	\includegraphics[width = 0.33\linewidth]{../3exp_new.png}
 	\caption{Зависимости положения мениска от времени в трех экспериментах}
 \end{figure}
 
-\vspace*{-1cm}
+\begin{table}[!ht]
+\begin{center}
+\caption{Концентрации компонентов в исследуемых растворах}
+\begin{tabular}{>{\centering}m{2cm} >{\centering}m{1.2cm} >{\centering}m{1.2cm} >{\centering}m{1.2cm} m{1.2cm}}
+	\hline
+	& $\mathbf{A}$, мл & $\mathbf{B}$, мл & $\mathbf{C}$, мл & {\centering}$\mathbf{D}$, мл \\
+	I состав & 1 & 8 & 1 & {\centering}-\\
+	II состав & 3 & 6 & 1 & {\centering}-\\
+	III состав & 7 & 2 & - & {\centering}1 \\
+	\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+$\mathbf{A}$ -- раствор инициатора в ММА ($0.01$ г/мл); $\mathbf{B}$ -- раствор иницатора в бензоле ($0.01$ г/мл); $\mathbf{C}$ --чистый ММА; $\mathbf{D}$ -- раствор TEMPO в МMA ($1.5 \cdot 10^{-3}$ M).
+
+Скорость полимеризации $V_r$ рассчитывалась по формуле
+\begin{gather}
+ 	-\frac{d \left[ M \right]}{dt} = V_r = \frac{\pi r^2}{V_0 \, \delta_M M} \frac{\Delta h}{\Delta t}, \notag
+\end{gather}  
+где $\delta_M$ -- параметр контракции -- является разностью обратных плотностей мономера и полимера
+\begin{gather}
+	\delta_M = \frac{1}{\rho_M} - \frac{1}{\rho_\textup{П}}, \notag
+\end{gather}
+
+а объем при температуре $T = 70^{\circ}C$ пересчитывался через объем при комнатной температуре при помощи коэффициента термического расширения $\alpha$:
+\begin{gather}
+	V_0 = V_0^{\prime} \left( 1 + \alpha \cdot \left( 70 - 20 \right) \right) \notag
+\end{gather}
+
 \begin{table}[!ht]
 \begin{center}
 \caption{}
 \begin{tabular}{ccccc}
 	\hline
-	Номер эксперимента & [I], моль/л & log [I] & v$_p$, моль/л$\cdot$с & log v$_p$ \\
+	Номер эксперимента & [M], моль/л & log [M] & v$_p$, моль/л$\cdot$с & log v$_p$ \\
 	%\hline
-	\#1 & 8.92$\cdot 10^{-3}$ & -4.72 & 1.18$\cdot 10^{-4}$ & -9.05 \\
-	\#2 & 1.78$\cdot 10^{-2}$ & -4.03 & 3.35$\cdot 10^{-4}$ & -8.00 \\
-	\#3 & 3.36$\cdot 10^{-2}$ & -3.33 & 6.47$\cdot 10^{-4}$ & -7.34 \\  
+	\#1 & 1.872 & 0.627 & 1.18$\cdot 10^{-4}$ & -9.05 \\
+	\#2 & 3.744 & 1.320 & 3.35$\cdot 10^{-4}$ & -8.00 \\
+	\#3 & 7.488 & 2.013 & 6.50$\cdot 10^{-4}$ & -7.34 \\  
 	\hline
 \end{tabular}
 \end{center}
 \end{table}
 
 \begin{figure}[!ht]
-	\includegraphics[width = 1.1\linewidth]{../loglog.png}
+	\centering
+	\includegraphics[width = 0.7\linewidth]{../loglog.png}
 	\caption{Определение порядка реакции по инициатору}
 \end{figure}
 
-Порядок реакции по инициатору 1.225.
+Порядок реакции по ММА 1.23.
 
 Определим скорость ингибирования по формуле
 \begin{gather}
